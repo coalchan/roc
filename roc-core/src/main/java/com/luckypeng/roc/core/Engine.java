@@ -1,9 +1,12 @@
 package com.luckypeng.roc.core;
 
+import com.luckypeng.roc.common.exception.CommonErrorCode;
+import com.luckypeng.roc.common.exception.RocException;
+import com.luckypeng.roc.common.util.AssertionUtils;
 import com.luckypeng.roc.core.config.RocConfig;
-import com.luckypeng.roc.core.exception.CommonErrorCode;
-import com.luckypeng.roc.core.exception.RocException;
-import com.luckypeng.roc.core.util.AssertionUtils;
+import com.luckypeng.roc.core.writer.Writer;
+import com.luckypeng.roc.core.writer.WriterFactory;
+import com.luckypeng.roc.mock.Mock;
 import org.apache.commons.cli.*;
 
 /**
@@ -30,8 +33,14 @@ public class Engine {
         AssertionUtils.isNotEmpty(job, new RocException(CommonErrorCode.PARAM_ERROR, "job参数不能为空"));
         AssertionUtils.isNotEmpty(plugin, new RocException(CommonErrorCode.PARAM_ERROR, "plugin参数不能为空"));
 
+        // parse config
         RocConfig rocConfig = RocConfig.parse(job);
 
+        // mock data
+        Object[] data = Mock.mock(rocConfig.getJob().getContent().getMock().getRule());
 
+        // write data
+        Writer writer = WriterFactory.getWriter(rocConfig);
+        writer.writeData(data);
     }
 }

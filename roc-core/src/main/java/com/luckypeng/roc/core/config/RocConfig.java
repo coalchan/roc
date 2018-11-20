@@ -1,8 +1,8 @@
 package com.luckypeng.roc.core.config;
 
 import com.alibaba.fastjson.JSON;
-import com.luckypeng.roc.core.exception.CommonErrorCode;
-import com.luckypeng.roc.core.util.AssertionUtils;
+import com.luckypeng.roc.common.exception.CommonErrorCode;
+import com.luckypeng.roc.common.util.AssertionUtils;
 import lombok.Getter;
 
 import java.util.Map;

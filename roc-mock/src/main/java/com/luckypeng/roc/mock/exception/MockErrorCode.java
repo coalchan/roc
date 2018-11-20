@@ -1,6 +1,6 @@
 package com.luckypeng.roc.mock.exception;
 
-import com.luckypeng.roc.core.exception.ErrorCode;
+import com.luckypeng.roc.common.exception.ErrorCode;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 

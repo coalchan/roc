@@ -1,6 +1,6 @@
 package com.luckypeng.roc.mock.func;
 
-import com.luckypeng.roc.core.util.DateUtils;
+import com.luckypeng.roc.common.util.DateUtils;
 import org.apache.commons.lang3.RandomUtils;
 
 import java.util.HashMap;

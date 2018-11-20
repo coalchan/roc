@@ -1,4 +1,4 @@
-package com.luckypeng.roc.core.util;
+package com.luckypeng.roc.common.util;
 
 import org.joda.time.DateTime;
 import org.joda.time.LocalDateTime;

@@ -1,7 +1,7 @@
-package com.luckypeng.roc.core.util;
+package com.luckypeng.roc.common.util;
 
-import com.luckypeng.roc.core.exception.ErrorCode;
-import com.luckypeng.roc.core.exception.RocException;
+import com.luckypeng.roc.common.exception.ErrorCode;
+import com.luckypeng.roc.common.exception.RocException;
 import org.apache.commons.lang3.StringUtils;
 
 /**

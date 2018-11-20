@@ -1,4 +1,4 @@
-package com.luckypeng.roc.core.util;
+package com.luckypeng.roc.common.util;
 
 import java.lang.reflect.Array;
 import java.util.Collection;

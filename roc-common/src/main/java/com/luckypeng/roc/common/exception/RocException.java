@@ -1,4 +1,4 @@
-package com.luckypeng.roc.core.exception;
+package com.luckypeng.roc.common.exception;
 
 import lombok.Getter;
 

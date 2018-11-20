@@ -1,4 +1,4 @@
-package com.luckypeng.roc.core.util;
+package com.luckypeng.roc.common.util;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
