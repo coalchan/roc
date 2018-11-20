@@ -1,5 +1,6 @@
 package com.luckypeng.roc.core.util;
 
+import com.luckypeng.roc.core.exception.ErrorCode;
 import com.luckypeng.roc.core.exception.RocException;
 import org.apache.commons.lang3.StringUtils;
 
@@ -25,6 +26,10 @@ public class AssertionUtils {
 
     public static void isNotEmpty(Object t, RocException e) {
         isFalse(EmptyUtils.isEmpty(t), e);
+    }
+
+    public static void isNotEmpty(Object t, ErrorCode errorCode, String message) {
+        isNotEmpty(t, new RocException(errorCode, message));
     }
 
     public static void notBlank(String s, RocException e) {
