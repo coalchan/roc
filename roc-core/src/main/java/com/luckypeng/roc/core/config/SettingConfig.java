@@ -15,6 +15,11 @@ public class SettingConfig extends AbstractConfig {
 
     private SpeedConfig speed = SpeedConfig.defaultConfig();
 
+    /**
+     * 写入数据量： 0表示一直写
+     */
+    private int num;
+
     public SettingConfig(Map<String, Object> map) {
         super(map);
         if(map.containsKey(KEY_SPEED_CONFIG)) {

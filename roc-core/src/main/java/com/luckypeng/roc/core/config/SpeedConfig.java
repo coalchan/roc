@@ -1,7 +1,5 @@
 package com.luckypeng.roc.core.config;
 
-import lombok.Getter;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -9,7 +7,6 @@ import java.util.Map;
  * Speed config
  * @author chenzhipeng
  */
-@Getter
 public class SpeedConfig extends AbstractConfig {
 
     public static final String KEY_BYTES = "bytes";
@@ -27,5 +24,13 @@ public class SpeedConfig extends AbstractConfig {
         map.put("bytes",DEFAULT_SPEED_BYTES);
         map.put("channel",DEFAULT_NUM_CHANNELS);
         return new SpeedConfig(map);
+    }
+
+    public long getBytes() {
+        return getLongVal(KEY_BYTES, DEFAULT_SPEED_BYTES);
+    }
+
+    public int getChannel() {
+        return getIntVal(KEY_NUM_CHANNELS, DEFAULT_NUM_CHANNELS);
     }
 }
