@@ -12,15 +12,14 @@ public class JdbcUtils {
 
     /**
      * 通过HiKariCP连接池获取dataSource
-     * @param hostname
-     * @param port
+     * @param jdbcUrl
      * @param username
      * @param password
      * @return
      */
-    public static HikariDataSource getDataSource(String hostname, int port, String username, String password, boolean isReadOnly) {
+    public static HikariDataSource getDataSource(String jdbcUrl, String username, String password, boolean isReadOnly) {
         HikariConfig hikariConfig = new HikariConfig();
-        hikariConfig.setJdbcUrl(String.format("jdbc:mysql://%s:%d", hostname, port));
+        hikariConfig.setJdbcUrl(jdbcUrl);
         hikariConfig.setUsername(username);
         hikariConfig.setPassword(password);
         hikariConfig.setReadOnly(isReadOnly);
@@ -29,8 +28,7 @@ public class JdbcUtils {
         try {
             return new HikariDataSource(hikariConfig);
         } catch (PoolInitializationException e) {
-            throw new RuntimeException("Error connecting to MySql: "
-                    + String.format("jdbc:mysql://%s:%d", hostname, port), e);
+            throw new RuntimeException("Error connecting to MySql: " + jdbcUrl, e);
         }
     }
 }

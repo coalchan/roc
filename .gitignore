@@ -26,3 +26,5 @@
 */target/
 logs/
 data/
+
+plugins/

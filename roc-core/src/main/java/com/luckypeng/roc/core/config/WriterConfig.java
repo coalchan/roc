@@ -1,6 +1,7 @@
 package com.luckypeng.roc.core.config;
 
-import java.util.ArrayList;
+import lombok.Getter;
+
 import java.util.List;
 import java.util.Map;
 
@@ -36,68 +37,32 @@ public class WriterConfig extends AbstractConfig {
         this.parameter = parameter;
     }
 
+    @Getter
     public static class ParameterConfig extends AbstractConfig {
         public static final String KEY_COLUMN_LIST = "column";
-        public static final String KEY_CONNECTION_CONFIG_LIST = "connection";
+        public static final String KEY_CONNECTION_CONFIG = "connection";
 
         List column;
-        List<ConnectionConfig> connection;
+        ConnectionConfig connection;
 
         public ParameterConfig(Map<String, Object> map) {
             super(map);
             column = (List) getVal(KEY_COLUMN_LIST);
-            List<Map<String,Object>> connList = (List<Map<String, Object>>) getVal(KEY_CONNECTION_CONFIG_LIST);
-            connection = new ArrayList<>();
-            if(connList != null) {
-                for(Map<String,Object> conn : connList) {
-                    connection.add(new ConnectionConfig(conn));
-                }
-            }
+            connection = (ConnectionConfig) getVal(KEY_CONNECTION_CONFIG);
         }
 
-        public List getColumn() {
-            return column;
-        }
-
-        public void setColumn(List column) {
-            this.column = column;
-        }
-
-        public List<ConnectionConfig> getConnection() {
-            return connection;
-        }
-
-        public void setConnection(List<ConnectionConfig> connection) {
-            this.connection = connection;
-        }
-
+        @Getter
         public class ConnectionConfig extends AbstractConfig {
             private static final String KEY_JDBC_URL = "jdbcUrl";
-            private static final String KEY_TABLE_LIST = "table";
+            private static final String KEY_TABLE = "table";
 
             private String jdbcUrl;
-            private List<String> table;
+            private String table;
 
             public ConnectionConfig(Map<String, Object> map) {
                 super(map);
                 jdbcUrl = getStringVal(KEY_JDBC_URL);
-                table = (List<String>) getVal(KEY_TABLE_LIST);
-            }
-
-            public String getJdbcUrl() {
-                return jdbcUrl;
-            }
-
-            public void setJdbcUrl(String jdbcUrl) {
-                this.jdbcUrl = jdbcUrl;
-            }
-
-            public List<String> getTable() {
-                return table;
-            }
-
-            public void setTable(List<String> table) {
-                this.table = table;
+                table = getStringVal(KEY_TABLE);
             }
         }
 

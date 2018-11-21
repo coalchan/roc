@@ -14,7 +14,7 @@ import org.apache.commons.cli.*;
  * @date 2018/11/16 16:06
  */
 public class Engine {
-    public static void main(String[] args) throws ParseException {
+    public static void main(String[] args) throws Exception {
         Options options = new Options();
 
         options.addOption("job", true, "Job config");
