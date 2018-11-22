@@ -12,11 +12,23 @@ import java.util.Map;
 @Getter
 public class MockConfig extends AbstractConfig {
     public static final String KEY_RULES = "rule";
+    public static final String KEY_MAX_LENGTH = "maxLength";
+
+    public static final int DEFAULT_LENGTH = 1;
 
     private List<String> rule;
+
 
     public MockConfig(Map<String, Object> map) {
         super(map);
         rule = (List<String>) map.get(KEY_RULES);
+    }
+
+    /**
+     * 每次最多mock条数
+     * @return
+     */
+    public int getMaxLength() {
+        return getIntVal(KEY_MAX_LENGTH, DEFAULT_LENGTH);
     }
 }

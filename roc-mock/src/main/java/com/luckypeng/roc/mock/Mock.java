@@ -11,11 +11,35 @@ import java.util.List;
  */
 @Slf4j
 public class Mock {
-    public static Object mock(String funcExpression) {
-        return FunctionHelper.executeFunc(funcExpression.trim());
+    /**
+     * mock单个
+     * @param rule
+     * @return
+     */
+    public static Object mock(String rule) {
+        return FunctionHelper.executeFunc(rule.trim());
     }
 
+    /**
+     * mock一组规则
+     * @param rule
+     * @return
+     */
     public static Object[] mock(List<String> rule) {
-        return rule.stream().map(String::trim).map(FunctionHelper::executeFunc).toArray();
+        return rule.stream().map(Mock::mock).toArray();
+    }
+
+    /**
+     * mock多组规则
+     * @param rule
+     * @param length
+     * @return
+     */
+    public static Object[][] mock(List<String> rule, int length) {
+        Object[][] result = new Object[length][];
+        for (int i = 0; i < length; i++) {
+            result[i] = mock(rule);
+        }
+        return result;
     }
 }

@@ -8,6 +8,7 @@
     },
     "content": {
       "mock": {
+        "maxLength": 5,
         "rule": [
           "@today()",
           "@float(10, 100, 2, 4)",

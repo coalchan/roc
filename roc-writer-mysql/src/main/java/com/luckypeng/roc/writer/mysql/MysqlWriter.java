@@ -47,13 +47,16 @@ public class MysqlWriter extends Writer {
     }
 
     @Override
-    public void writeData(Object[] data) throws SQLException {
+    public void writeData(Object[][] data) throws SQLException {
         try (Connection conn = dataSource.getConnection()) {
             try (PreparedStatement pst = conn.prepareStatement(insertSql)) {
                 for (int i = 0; i < data.length; i++) {
-                    pst.setObject(i+1, data[i]);
+                    for (int j = 0; j < data[i].length; j++) {
+                        pst.setObject(j+1, data[i][j]);
+                    }
+                    pst.addBatch();
                 }
-                pst.executeUpdate();
+                pst.executeBatch();
             }
         }
     }

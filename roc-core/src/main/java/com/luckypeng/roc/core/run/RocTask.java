@@ -5,6 +5,7 @@ import com.luckypeng.roc.core.config.MockConfig;
 import com.luckypeng.roc.core.writer.Writer;
 import com.luckypeng.roc.mock.Mock;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.RandomUtils;
 
 import java.util.List;
 
@@ -21,7 +22,8 @@ public class RocTask implements Runnable {
     @Override
     public void run() {
         while (true) {
-            Object[] data = Mock.mock(mockConfig.getRule());
+            int length = RandomUtils.nextInt(1, mockConfig.getMaxLength()+1);
+            Object[][] data = Mock.mock(mockConfig.getRule(), length);
             try {
                 write(data);
             } catch (Exception e) {
@@ -32,7 +34,7 @@ public class RocTask implements Runnable {
         }
     }
 
-    private void write(Object[] data) throws Exception {
+    private void write(Object[][] data) throws Exception {
         if (writer.canParallel()) {
             writer.writeData(data);
         } else {

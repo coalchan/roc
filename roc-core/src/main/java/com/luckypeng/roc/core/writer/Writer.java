@@ -35,5 +35,5 @@ public abstract class Writer {
      * @param data
      * @throws Exception
      */
-    public abstract void writeData(Object[] data) throws Exception;
+    public abstract void writeData(Object[][] data) throws Exception;
 }

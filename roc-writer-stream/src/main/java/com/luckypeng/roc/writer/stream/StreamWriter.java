@@ -16,8 +16,10 @@ public class StreamWriter extends Writer {
     }
 
     @Override
-    public void writeData(Object[] data) {
-        String content = Arrays.stream(data).map(Object::toString).collect(Collectors.joining(", ", "{", "}"));
-        System.out.println(content);
+    public void writeData(Object[][] data) {
+        for (int i = 0; i < data.length; i++) {
+            String content = Arrays.stream(data[i]).map(Object::toString).collect(Collectors.joining(", ", "{", "}"));
+            System.out.println(content);
+        }
     }
 }
