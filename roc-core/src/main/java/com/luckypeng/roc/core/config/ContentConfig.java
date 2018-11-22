@@ -11,7 +11,7 @@ import java.util.Map;
 @Getter
 public class ContentConfig extends AbstractConfig {
 
-    public final static String KEY_READER_CONFIG = "reader";
+    public final static String KEY_MOCK_CONFIG = "mock";
     public final static String KEY_WRITER_CONFIG = "writer";
 
     MockConfig mock;
@@ -20,7 +20,7 @@ public class ContentConfig extends AbstractConfig {
     public ContentConfig(Map<String, Object> map) {
         super(map);
         if(map != null) {
-            mock = new MockConfig((Map<String, Object>) map.get(KEY_READER_CONFIG));
+            mock = new MockConfig((Map<String, Object>) map.get(KEY_MOCK_CONFIG));
             writer = new WriterConfig((Map<String, Object>) map.get(KEY_WRITER_CONFIG));
         }
     }

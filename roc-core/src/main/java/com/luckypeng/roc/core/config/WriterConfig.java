@@ -48,7 +48,7 @@ public class WriterConfig extends AbstractConfig {
         public ParameterConfig(Map<String, Object> map) {
             super(map);
             column = (List) getVal(KEY_COLUMN_LIST);
-            connection = (ConnectionConfig) getVal(KEY_CONNECTION_CONFIG);
+            connection = new ConnectionConfig((Map<String, Object>) map.get(KEY_CONNECTION_CONFIG));
         }
 
         @Getter

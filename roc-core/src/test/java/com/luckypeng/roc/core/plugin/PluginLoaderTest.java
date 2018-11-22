@@ -1,13 +1,11 @@
 package com.luckypeng.roc.core.plugin;
 
 import org.junit.Test;
+import plugin.PluginLoader;
 
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLClassLoader;
-
-import static org.junit.Assert.*;
 
 public class PluginLoaderTest {
     @Test
@@ -33,6 +31,12 @@ public class PluginLoaderTest {
             }
         }
 
+    }
+
+    @Test
+    public void testGetPluginClass() {
+        PluginLoader pluginLoader = new PluginLoader("mysqlwriter", "D:\\other-code\\1. Java\\roc\\plugins");
+        System.out.println(pluginLoader.getPluginClass());
     }
 
 }

@@ -1,9 +1,8 @@
 package com.luckypeng.roc.core.config;
 
 import lombok.Getter;
+import lombok.Setter;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -11,6 +10,7 @@ import java.util.Map;
  * @author chenzhipeng
  */
 @Getter
+@Setter
 public class JobConfig extends AbstractConfig {
 
     public static final String KEY_SETTING_CONFIG = "setting";

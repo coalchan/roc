@@ -7,7 +7,10 @@ import com.luckypeng.roc.core.config.RocConfig;
 import com.luckypeng.roc.core.writer.Writer;
 import com.luckypeng.roc.core.writer.WriterFactory;
 import com.luckypeng.roc.mock.Mock;
-import org.apache.commons.cli.*;
+import org.apache.commons.cli.BasicParser;
+import org.apache.commons.cli.CommandLine;
+import org.apache.commons.cli.HelpFormatter;
+import org.apache.commons.cli.Options;
 
 /**
  * @author chenzhipeng
@@ -27,14 +30,14 @@ public class Engine {
 
         CommandLine commandLine = parser.parse(options, args);
 
-        String job = commandLine.getOptionValue("job");
+        String jobFile = commandLine.getOptionValue("job");
         String plugin = commandLine.getOptionValue("plugin");
 
-        AssertionUtils.isNotEmpty(job, new RocException(CommonErrorCode.PARAM_ERROR, "job参数不能为空"));
+        AssertionUtils.isNotEmpty(jobFile, new RocException(CommonErrorCode.PARAM_ERROR, "job参数不能为空"));
         AssertionUtils.isNotEmpty(plugin, new RocException(CommonErrorCode.PARAM_ERROR, "plugin参数不能为空"));
 
         // parse config
-        RocConfig rocConfig = RocConfig.parse(job);
+        RocConfig rocConfig = RocConfig.parse(jobFile);
 
         // mock data
         Object[] data = Mock.mock(rocConfig.getJob().getContent().getMock().getRule());

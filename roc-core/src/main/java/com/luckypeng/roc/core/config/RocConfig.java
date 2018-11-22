@@ -3,7 +3,9 @@ package com.luckypeng.roc.core.config;
 import com.alibaba.fastjson.JSON;
 import com.luckypeng.roc.common.exception.CommonErrorCode;
 import com.luckypeng.roc.common.util.AssertionUtils;
+import com.luckypeng.roc.common.util.StringUtils;
 import lombok.Getter;
+import lombok.Setter;
 
 import java.util.Map;
 
@@ -12,6 +14,7 @@ import java.util.Map;
  * @date 2018/11/20 16:46
  */
 @Getter
+@Setter
 public class RocConfig extends AbstractConfig {
     private JobConfig job;
 
@@ -26,9 +29,10 @@ public class RocConfig extends AbstractConfig {
 
     /**
      * Job配置解析
-     * @param job
+     * @param jobFile
      */
-    public static RocConfig parse(String job) {
+    public static RocConfig parse(String jobFile) {
+        String job = StringUtils.fromFile(jobFile);
         Map<String, Object> map = JSON.parseObject(job);
         RocConfig rocConfig = new RocConfig(map);
         checkConfig(rocConfig);

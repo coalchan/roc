@@ -1,0 +1,40 @@
+{
+  "job": {
+    "setting": {
+      "speed": {
+        "channel": 3,
+        "bytes": 0
+      }
+    },
+    "content": {
+      "mock": {
+        "rule": [
+          "@today()",
+          "@float(10, 100, 2, 4)",
+          "@string('我们会从这里随机选择几个字符串', 4, 8)"
+        ]
+      },
+      "writer": {
+        "name": "mysqlwriter",
+        "parameter": {
+          "writeMode": [
+            "insert",
+            "delete",
+            "update"
+          ],
+          "username": "root",
+          "password": "MySQL-test05",
+          "column": [
+            "c1",
+            "c2"
+          ],
+          "batchSize": 1000,
+          "connection": {
+            "jdbcUrl": "jdbc:mysql://cdhtest05:3306/test",
+            "table": "testczp"
+          }
+        }
+      }
+    }
+  }
+}

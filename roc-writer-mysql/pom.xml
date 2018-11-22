@@ -17,6 +17,13 @@
             <artifactId>roc-core</artifactId>
             <version>${roc-project.version}</version>
         </dependency>
+
+        <!--mysql connector-->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.46</version>
+        </dependency>
     </dependencies>
 
     <build>
