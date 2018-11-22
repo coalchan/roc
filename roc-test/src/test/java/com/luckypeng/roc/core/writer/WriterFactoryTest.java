@@ -4,7 +4,7 @@ import com.luckypeng.roc.core.config.RocConfig;
 import com.luckypeng.roc.writer.mysql.MysqlWriter;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 
 /**
  * @author chenzhipeng

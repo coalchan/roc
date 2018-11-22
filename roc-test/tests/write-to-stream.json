@@ -1,0 +1,24 @@
+{
+  "job": {
+    "setting": {
+      "speed": {
+        "channel": 3,
+        "bytes": 0
+      }
+    },
+    "content": {
+      "mock": {
+        "rule": [
+          "@today()",
+          "@float(10, 100, 2, 4)",
+          "@string('我们会从这里随机选择几个字符串', 4, 8)"
+        ]
+      },
+      "writer": {
+        "name": "streamwriter",
+        "parameter": {
+        }
+      }
+    }
+  }
+}

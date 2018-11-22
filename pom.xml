@@ -15,6 +15,7 @@
         <module>roc-writer-mysql</module>
         <module>roc-common</module>
         <module>roc-test</module>
+        <module>roc-writer-stream</module>
     </modules>
 
     <properties>

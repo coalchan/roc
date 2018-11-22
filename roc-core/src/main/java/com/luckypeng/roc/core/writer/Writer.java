@@ -7,9 +7,28 @@ import com.luckypeng.roc.core.config.RocConfig;
  * @date 2018/11/15 15:20
  */
 public abstract class Writer {
-    public Writer(RocConfig rocConfig) {
+    protected RocConfig rocConfig;
 
+    public Writer(RocConfig rocConfig) {
+        this.rocConfig = rocConfig;
     }
+
+    /**
+     * 检查配置
+     * @return
+     */
+    public boolean checkConfig() {
+        return true;
+    }
+
+    /**
+     * 是否可以并行
+     * @return
+     */
+    public boolean canParallel() {
+        return true;
+    }
+
 
     /**
      * 写数据
