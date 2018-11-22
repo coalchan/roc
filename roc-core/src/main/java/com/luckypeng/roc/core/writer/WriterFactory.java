@@ -2,7 +2,7 @@ package com.luckypeng.roc.core.writer;
 
 import com.luckypeng.roc.core.config.RocConfig;
 import com.luckypeng.roc.core.config.WriterConfig;
-import plugin.PluginLoader;
+import com.luckypeng.roc.core.plugin.PluginLoader;
 
 import java.lang.reflect.Constructor;
 

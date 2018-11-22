@@ -1,7 +1,6 @@
 package com.luckypeng.roc.core.plugin;
 
 import org.junit.Test;
-import plugin.PluginLoader;
 
 import java.io.IOException;
 import java.net.URL;

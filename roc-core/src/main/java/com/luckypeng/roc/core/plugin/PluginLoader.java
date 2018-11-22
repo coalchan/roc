@@ -1,4 +1,4 @@
-package plugin;
+package com.luckypeng.roc.core.plugin;
 
 import com.luckypeng.roc.common.util.SysUtil;
 
