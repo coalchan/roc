@@ -2,6 +2,7 @@ package com.luckypeng.roc.core.writer;
 
 import com.luckypeng.roc.core.config.RocConfig;
 import com.luckypeng.roc.writer.mysql.MysqlWriter;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import static org.junit.Assert.assertTrue;
@@ -12,6 +13,7 @@ import static org.junit.Assert.assertTrue;
  */
 public class WriterFactoryTest {
     @Test
+    @Ignore
     public void getWriter() {
         RocConfig rocConfig = RocConfig.parse("../roc-test/tests/test.json");
         Writer writer = WriterFactory.getWriter(rocConfig);

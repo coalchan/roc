@@ -1,6 +1,7 @@
 package com.luckypeng.roc.writer.stream;
 
 import com.luckypeng.roc.core.config.RocConfig;
+import com.luckypeng.roc.core.data.Record;
 import com.luckypeng.roc.core.writer.Writer;
 
 import java.util.Arrays;
@@ -16,9 +17,9 @@ public class StreamWriter extends Writer {
     }
 
     @Override
-    public void writeData(Object[][] data) {
-        for (int i = 0; i < data.length; i++) {
-            String content = Arrays.stream(data[i]).map(Object::toString).collect(Collectors.joining(", ", "{", "}"));
+    public void writeData(Record[] records) {
+        for (int i = 0; i < records.length; i++) {
+            String content = Arrays.stream(records[i].getData()).map(Object::toString).collect(Collectors.joining(", ", "{", "}"));
             System.out.println(content);
         }
     }

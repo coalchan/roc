@@ -4,6 +4,7 @@ import com.luckypeng.roc.common.util.ArrayUtils;
 import com.luckypeng.roc.common.util.JdbcUtils;
 import com.luckypeng.roc.core.config.RocConfig;
 import com.luckypeng.roc.core.config.WriterConfig;
+import com.luckypeng.roc.core.data.Record;
 import com.luckypeng.roc.core.writer.Writer;
 import lombok.extern.slf4j.Slf4j;
 
@@ -47,12 +48,12 @@ public class MysqlWriter extends Writer {
     }
 
     @Override
-    public void writeData(Object[][] data) throws SQLException {
+    public void writeData(Record[] records) throws SQLException {
         try (Connection conn = dataSource.getConnection()) {
             try (PreparedStatement pst = conn.prepareStatement(insertSql)) {
-                for (int i = 0; i < data.length; i++) {
-                    for (int j = 0; j < data[i].length; j++) {
-                        pst.setObject(j+1, data[i][j]);
+                for (int i = 0; i < records.length; i++) {
+                    for (int j = 0; j < records[i].getData().length; j++) {
+                        pst.setObject(j+1, records[i].getData()[j]);
                     }
                     pst.addBatch();
                 }

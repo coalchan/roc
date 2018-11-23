@@ -2,6 +2,9 @@ package com.luckypeng.roc.core.run;
 
 import com.luckypeng.roc.common.util.SysUtil;
 import com.luckypeng.roc.core.config.MockConfig;
+import com.luckypeng.roc.core.data.Record;
+import com.luckypeng.roc.core.statistics.ByteRateLimiter;
+import com.luckypeng.roc.core.statistics.DataCollector;
 import com.luckypeng.roc.core.writer.Writer;
 import com.luckypeng.roc.mock.Mock;
 import lombok.extern.slf4j.Slf4j;
@@ -13,33 +16,60 @@ import java.util.List;
 public class RocTask implements Runnable {
     private Writer writer;
     private MockConfig mockConfig;
+    private ByteRateLimiter rateLimiter;
+    private DataCollector collector = DataCollector.getInstance();
+    private boolean isLimit = false;
 
     public RocTask(Writer writer, MockConfig mockConfig) {
         this.writer = writer;
         this.mockConfig = mockConfig;
     }
 
+    public void setRateLimiter(ByteRateLimiter rateLimiter) {
+        this.isLimit = true;
+        this.rateLimiter = rateLimiter;
+    }
+
     @Override
     public void run() {
         while (true) {
             int length = RandomUtils.nextInt(1, mockConfig.getMaxLength()+1);
-            Object[][] data = Mock.mock(mockConfig.getRule(), length);
+            Record[] records = mocks(mockConfig.getRule(), length);
             try {
-                write(data);
+                write(records);
             } catch (Exception e) {
                 log.error(e.getMessage(), e);
             }
-            // TODO 限速
-            SysUtil.sleep(1000);
+            // 统计信息
+            collector.collectorInfo(records);
+
+            if (isLimit) {
+                // 限速
+                rateLimiter.acquire();
+            }
         }
     }
 
-    private void write(Object[][] data) throws Exception {
+    /**
+     * 生成最大长度为 maxLength 的mock记录
+     * @param rule
+     * @param maxLength
+     * @return
+     */
+    private Record[] mocks(List<String> rule, int maxLength) {
+        Record[] records = new Record[maxLength];
+        for (int i = 0; i < records.length; i++) {
+            records[i] = new Record(Mock.mock(rule));
+        }
+        return records;
+    }
+
+    private void write(Record[] records) throws Exception {
         if (writer.canParallel()) {
-            writer.writeData(data);
+            writer.writeData(records);
         } else {
             synchronized (mockConfig) {
-                writer.writeData(data);
+                writer.writeData(records);
             }
         }
     }

@@ -1,6 +1,7 @@
 package com.luckypeng.roc.core.writer;
 
 import com.luckypeng.roc.core.config.RocConfig;
+import com.luckypeng.roc.core.data.Record;
 
 /**
  * @author chenzhipeng
@@ -32,8 +33,8 @@ public abstract class Writer {
 
     /**
      * 写数据
-     * @param data
+     * @param records
      * @throws Exception
      */
-    public abstract void writeData(Object[][] data) throws Exception;
+    public abstract void writeData(Record[] records) throws Exception;
 }

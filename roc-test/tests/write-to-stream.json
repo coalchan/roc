@@ -2,8 +2,8 @@
   "job": {
     "setting": {
       "speed": {
-        "channel": 3,
-        "bytes": 0
+        "channel": 10,
+        "bytes": 1000
       }
     },
     "content": {
