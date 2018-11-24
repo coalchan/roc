@@ -5,6 +5,9 @@ import java.math.BigInteger;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * @author chenzhipeng
+ */
 public abstract class AbstractConfig {
 
     protected Map<String,Object> internalMap;
@@ -63,7 +66,7 @@ public abstract class AbstractConfig {
 
     public int getIntVal(String key, int defaultValue) {
         Object ret = internalMap.get(key);
-        if(ret == null) {
+        if(ret == null || ret.toString().isEmpty()) {
             return defaultValue;
         }
         if(ret instanceof Integer) {
@@ -92,7 +95,7 @@ public abstract class AbstractConfig {
 
     public long getLongVal(String key, long defaultValue) {
         Object ret = internalMap.get(key);
-        if(ret == null) {
+        if(ret == null || ret.toString().isEmpty()) {
             return defaultValue;
         }
         if(ret instanceof Long) {
@@ -121,7 +124,7 @@ public abstract class AbstractConfig {
 
     public double getDoubleVal(String key, double defaultValue) {
         Object ret = internalMap.get(key);
-        if (ret == null) {
+        if (ret == null || ret.toString().isEmpty()) {
             return defaultValue;
         }
         if (ret instanceof Double) {
@@ -150,7 +153,7 @@ public abstract class AbstractConfig {
 
     public boolean getBooleanVal(String key, boolean defaultValue) {
         Object ret = internalMap.get(key);
-        if (ret == null) {
+        if (ret == null || ret.toString().isEmpty()) {
             return defaultValue;
         }
         if (ret instanceof Boolean) {

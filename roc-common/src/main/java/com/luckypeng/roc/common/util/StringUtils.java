@@ -13,9 +13,9 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils {
         File file = new File(fileName);
         try {
             FileInputStream in = new FileInputStream(file);
-            byte[] filecontent = new byte[(int) file.length()];
-            in.read(filecontent);
-            return new String(filecontent, "UTF-8");
+            byte[] fileContent = new byte[(int) file.length()];
+            in.read(fileContent);
+            return new String(fileContent, "UTF-8");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

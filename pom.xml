@@ -16,10 +16,12 @@
         <module>roc-common</module>
         <module>roc-test</module>
         <module>roc-writer-stream</module>
+        <module>roc-writer-file</module>
     </modules>
 
     <properties>
         <roc-project.version>0.0.1-SNAPSHOT</roc-project.version>
+        <java.version>1.8</java.version>
     </properties>
 
     <build>
@@ -28,8 +30,8 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
                 </configuration>
             </plugin>
         </plugins>

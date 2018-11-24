@@ -1,6 +1,5 @@
 package com.luckypeng.roc.core.run;
 
-import com.luckypeng.roc.common.util.SysUtil;
 import com.luckypeng.roc.core.config.MockConfig;
 import com.luckypeng.roc.core.data.Record;
 import com.luckypeng.roc.core.statistics.ByteRateLimiter;
@@ -12,6 +11,9 @@ import org.apache.commons.lang3.RandomUtils;
 
 import java.util.List;
 
+/**
+ * @author chenzhipeng
+ */
 @Slf4j
 public class RocTask implements Runnable {
     private Writer writer;
@@ -38,6 +40,7 @@ public class RocTask implements Runnable {
             try {
                 write(records);
             } catch (Exception e) {
+                e.printStackTrace(); // TODO log4j配置
                 log.error(e.getMessage(), e);
             }
             // 统计信息
