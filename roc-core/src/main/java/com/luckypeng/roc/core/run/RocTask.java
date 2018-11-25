@@ -40,7 +40,6 @@ public class RocTask implements Runnable {
             try {
                 write(records);
             } catch (Exception e) {
-                e.printStackTrace(); // TODO log4j配置
                 log.error(e.getMessage(), e);
             }
             // 统计信息

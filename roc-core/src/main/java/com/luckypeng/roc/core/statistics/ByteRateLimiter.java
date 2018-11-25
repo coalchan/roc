@@ -30,7 +30,7 @@ public class ByteRateLimiter {
             if (DataCollector.getTotalRecords() > 0) {
                 double bpr = 1.0 * DataCollector.getTotalByteSize() / DataCollector.getTotalRecords();
                 double permitsPerSecond = expectedSpeedBytes / channel / bpr;
-                System.out.println("修正限速QPS: " + permitsPerSecond);
+                log.info("修正限速QPS: " + permitsPerSecond);
                 rateLimiter.setRate(permitsPerSecond);
             }
         };
