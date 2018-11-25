@@ -34,7 +34,21 @@
                         <configuration>
                             <artifactSet>
                                 <excludes>
+                                    <exclude>com.luckypeng.roc:roc-common</exclude>
                                     <exclude>com.luckypeng.roc:roc-core</exclude>
+                                    <exclude>com.luckypeng.roc:roc-mock</exclude>
+
+                                    <exclude>joda-time:joda-time</exclude>
+                                    <exclude>org.apache.commons:commons-lang3</exclude>
+                                    <exclude>com.zaxxer:HikariCP</exclude>
+                                    <exclude>org.projectlombok:lombok</exclude>
+                                    <exclude>ch.qos.logback:*</exclude>
+                                    <exclude>org.slf4j:slf4j-api</exclude>
+
+                                    <exclude>commons-cli:commons-cli</exclude>
+                                    <exclude>com.alibaba:fastjson</exclude>
+                                    <exclude>com.google.guava:guava</exclude>
+                                    <exclude>org.codehaus.mojo:animal-sniffer-annotations</exclude>
                                 </excludes>
                             </artifactSet>
                             <filters>
